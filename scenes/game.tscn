@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr7aarhjivv5q"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_vrvd5"]
+[ext_resource type="PackedScene" uid="uid://dlnfqp6q7vppm" path="res://scenes/player.tscn" id="2_as76m"]
+[ext_resource type="PackedScene" uid="uid://k6c8qxgacp4q" path="res://scenes/ethereal.tscn" id="3_54nyh"]
+[ext_resource type="PackedScene" uid="uid://cih38xivx51i7" path="res://scenes/wall.tscn" id="3_f7qbd"]
+[ext_resource type="Texture2D" uid="uid://oiv5qedp2n51" path="res://asserts/Heart.png" id="4_oe0va"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5jow"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_vrvd5")
+
+[node name="Player" parent="." instance=ExtResource("2_as76m")]
+position = Vector2(215, 547)
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(963, 539)
+scale = Vector2(150, 80)
+shape = SubResource("RectangleShape2D_p5jow")
+
+[node name="Ethereal" parent="." instance=ExtResource("3_54nyh")]
+position = Vector2(2004, 568)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="Ethereal2" parent="." instance=ExtResource("3_54nyh")]
+position = Vector2(2002, 206)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_oe0va")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer/TextureRect"]
+layout_mode = 0
+offset_top = 6.0
+offset_right = 64.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 30
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wall" parent="." instance=ExtResource("3_f7qbd")]
+position = Vector2(-200, 0)
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]

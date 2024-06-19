@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlnfqp6q7vppm"]
+
+[ext_resource type="Texture2D" uid="uid://b752idtwaq1x6" path="res://asserts/Nullifier.png" id="1_x1s8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5c0s"]
+size = Vector2(86, 62)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+collision_layer = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x1s8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a5c0s")

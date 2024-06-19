@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://k6c8qxgacp4q"]
+
+[ext_resource type="Script" path="res://scripts/ethereal.gd" id="1_hcy55"]
+[ext_resource type="Texture2D" uid="uid://dw1ba6sjkd82y" path="res://asserts/Ethereal.jpg" id="1_kugo0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jedtd"]
+size = Vector2(240, 241)
+
+[node name="Ethereal" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_hcy55")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kugo0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_jedtd")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.52588e-05, 0.500015)
+scale = Vector2(12.1, 12.05)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
