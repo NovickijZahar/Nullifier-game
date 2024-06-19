@@ -12,29 +12,30 @@ bg_color = Color(0.785208, 0.38598, 0.743621, 1)
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_u8ibl")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_repeat = 2
-position = Vector2(960, 540)
-texture = ExtResource("1_vlhls")
-region_enabled = true
-region_rect = Rect2(0, 0, 1920, 1080)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MarginContainer"]
+texture_repeat = 2
+position = Vector2(1753.78, 986.5)
+scale = Vector2(1.82685, 1.82685)
+texture = ExtResource("1_vlhls")
+region_enabled = true
+region_rect = Rect2(0, 0, 1920, 1080)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.113832, 0.00295718, 0.228158, 1)
@@ -43,7 +44,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wsmt1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m3eti")
 text = "Начать"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.113832, 0.00295718, 0.228158, 1)
@@ -52,7 +53,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wsmt1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m3eti")
 text = "Как играть"
 
-[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.113832, 0.00295718, 0.228158, 1)
@@ -61,6 +62,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wsmt1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m3eti")
 text = "Выход"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
