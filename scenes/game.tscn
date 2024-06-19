@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dr7aarhjivv5q"]
+[gd_scene load_steps=6 format=3 uid="uid://dr7aarhjivv5q"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_vrvd5"]
 [ext_resource type="PackedScene" uid="uid://dlnfqp6q7vppm" path="res://scenes/player.tscn" id="2_as76m"]
-[ext_resource type="PackedScene" uid="uid://k6c8qxgacp4q" path="res://scenes/ethereal.tscn" id="3_54nyh"]
 [ext_resource type="PackedScene" uid="uid://cih38xivx51i7" path="res://scenes/wall.tscn" id="3_f7qbd"]
 [ext_resource type="Texture2D" uid="uid://oiv5qedp2n51" path="res://asserts/Heart.png" id="4_oe0va"]
 
@@ -19,14 +18,8 @@ position = Vector2(963, 539)
 scale = Vector2(150, 80)
 shape = SubResource("RectangleShape2D_p5jow")
 
-[node name="Ethereal" parent="." instance=ExtResource("3_54nyh")]
-position = Vector2(2004, 568)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
-
-[node name="Ethereal2" parent="." instance=ExtResource("3_54nyh")]
-position = Vector2(2002, 206)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -58,8 +51,24 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Очки: "
+
+[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Wall" parent="." instance=ExtResource("3_f7qbd")]
 position = Vector2(-200, 0)
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
 [connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

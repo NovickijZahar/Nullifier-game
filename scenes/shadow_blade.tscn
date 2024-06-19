@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://r4xtrmwy2gmb"]
+
+[ext_resource type="Texture2D" uid="uid://g1q4f8b73rmm" path="res://asserts/ShadowBlade.webp" id="1_rwclv"]
+[ext_resource type="Script" path="res://scripts/shadow_blade.gd" id="1_v0soo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_buav8"]
+size = Vector2(88, 64)
+
+[node name="ShadowBlade" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_v0soo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rwclv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_buav8")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1.90735e-06, -0.5)
+scale = Vector2(4.4, 3.25)

@@ -10,7 +10,7 @@ func _physics_process(delta):
 		if collider:
 			if collider.has_method("self_destroy"):
 				collider.self_destroy()
-				Global.points += 100
+				Global.points += randi_range(75, 125)
 			queue_free()
 
 
